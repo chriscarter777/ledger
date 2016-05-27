@@ -1,0 +1,61 @@
+@model Ledger.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AcctHolderID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AcctHolderID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AcctNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AcctNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AcctType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AcctType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Institution)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Institution)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Interest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Limit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Limit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1>Welcome to Ledger!</h1>
+    <h3>"Take control of your finances."</h3>
+    <br />
+
+    <ul class="directory">
+        <li><a asp-controller="Home" asp-action="Index">Home - </a></li>
+        <li><a asp-controller="Account" asp-action="Index">Accounts - Manage your financial accounts.</a></li>
+        <li><a asp-controller="Category" asp-action="Index">Categories - Manage your list of transaction categories.</a></li>
+        <li><a asp-controller="Transaction" asp-action="Index">Ledger - View and Edit transactions.</a></li>
+        <li><a asp-controller="Chart" asp-action="Create">Charts - Create and print financial charts.</a></li>
+        <li><a asp-controller="Report" asp-action="Create">Reports - Create and print a custom report.</a></li>
+        <li><a asp-controller="User" asp-action="Index">Edit Profile - Edit your user profile.</a></li>
+        <li><a asp-controller="Home" asp-action="About">About - Ledger!</a></li>
+        <li><a asp-controller="Home" asp-action="Contact">Contact - the support staff.</a></li>
+    </ul>
+
+</div>
