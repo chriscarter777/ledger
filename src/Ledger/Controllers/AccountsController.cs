@@ -18,7 +18,7 @@ namespace Ledger.Controllers
         // GET: Account
         public IActionResult Index()
         {
-            return View(_context.Account.ToList());
+            return View(_context.User.ToList());
         }
 
         // GET: Account/Details/5
@@ -29,13 +29,13 @@ namespace Ledger.Controllers
                 return HttpNotFound();
             }
 
-            Account account = _context.Account.Single(m => m.ID == id);
-            if (account == null)
+            User user = _context.User.Single(m => m.ID == id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
 
-            return View(account);
+            return View(user);
         }
 
         // GET: Account/Create
@@ -47,15 +47,15 @@ namespace Ledger.Controllers
         // POST: Account/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Account account)
+        public IActionResult Create(User user)
         {
             if (ModelState.IsValid)
             {
-                _context.Account.Add(account);
+                _context.User.Add(user);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(account);
+            return View(user);
         }
 
         // GET: Account/Edit/5
@@ -66,12 +66,12 @@ namespace Ledger.Controllers
                 return HttpNotFound();
             }
 
-            Account account = _context.Account.Single(m => m.ID == id);
-            if (account == null)
+            User user = _context.User.Single(m => m.ID == id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(user);
         }
 
         // POST: Account/Edit/5
@@ -97,13 +97,13 @@ namespace Ledger.Controllers
                 return HttpNotFound();
             }
 
-            Account account = _context.Account.Single(m => m.ID == id);
-            if (account == null)
+            User user = _context.User.Single(m => m.ID == id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
 
-            return View(account);
+            return View(user);
         }
 
         // POST: Account/Delete/5
@@ -111,8 +111,8 @@ namespace Ledger.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Account account = _context.Account.Single(m => m.ID == id);
-            _context.Account.Remove(account);
+            User user = _context.User.Single(m => m.ID == id);
+            _context.User.Remove(user);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

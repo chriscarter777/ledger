@@ -1,10 +1,10 @@
 ﻿@using System.Collections.Generic
 @using Microsoft.AspNet.Http
 @using Microsoft.AspNet.Http.Authentication
-@using Ledger.ViewModels.User;
+@using Ledger.Models;
 
-@model LoginViewModel
-@inject SignInManager<ApplicationUser> SignInManager
+@model User
+@inject SignInManager<User> SignInManager
 
 @{
     ViewData["Title"] = "Log in";

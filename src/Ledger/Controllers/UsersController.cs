@@ -20,20 +20,17 @@ namespace Ledger.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IEmailSender _emailSender;
-        private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public UsersController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             IEmailSender emailSender,
-            ISmsSender smsSender,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
-            _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<UsersController>();
         }
 
@@ -52,7 +49,7 @@ namespace Ledger.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(UserModel model, string returnUrl = null)
+        public async Task<IActionResult> Login(User model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
@@ -95,7 +92,7 @@ namespace Ledger.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(UserModel model)
+        public async Task<IActionResult> Register(User model)
         {
             if (ModelState.IsValid)
             {
@@ -165,7 +162,7 @@ namespace Ledger.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ForgotPassword(UserModel model)
+        public async Task<IActionResult> ForgotPassword(User model)
         {
             if (ModelState.IsValid)
             {
@@ -212,7 +209,7 @@ namespace Ledger.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(UserModel model)
+        public async Task<IActionResult> ResetPassword(User model)
         {
             if (!ModelState.IsValid)
             {
@@ -224,12 +221,6 @@ namespace Ledger.Controllers
                 // Don't reveal that the user does not exist
                 return RedirectToAction(nameof(UsersController.ResetPasswordConfirmation), "Account");
             }
-            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction(nameof(UsersController.ResetPasswordConfirmation), "Account");
-            }
-            AddErrors(result);
             return View();
         }
 

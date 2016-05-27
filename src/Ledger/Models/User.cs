@@ -16,6 +16,7 @@ namespace Ledger.Models
         [Required(ErrorMessage = "Please enter a password.")]
         [MinLength(8, ErrorMessage = "Password must be at least 8 characters long")]
         public string Password { get; set; }
-        public string[] Prefs { get; set; }
+        public bool RememberMe { get; set; }
+        public Dictionary<string, string> Prefs { get; set; }
     }
 }

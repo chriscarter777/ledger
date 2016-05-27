@@ -17,6 +17,6 @@ namespace Ledger.Models
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        public DbSet<Account> Account { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }
